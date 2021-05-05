@@ -1,0 +1,24 @@
+.list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.list-item span {
+  display: inline-block;
+  width: 150px;
+  padding: 10px;
+  font-size: 12px;
+}
+
+.select-data-container {
+  position: relative;
+}
+
+.show-list {
+  left: 0;
+  top: 32px;
+}
+
+.selected {
+  border: 1px solid red;
+}

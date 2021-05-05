@@ -1,0 +1,11 @@
+<div class="select-data-container">
+  <button class="btn btn-primary" (click)="toggleList()">Choose product</button>
+  <ul class="list" [ngClass]="{'show-list': isListVisible}">
+    <li *ngFor="let product of products" (click)="selectProduct(product)" class="list-item well" [ngClass]="getCssForSelectedProduct(product)">
+      <span>NAME: {{product.name}}</span>
+      <span>PRICE: {{product.price}}</span>
+      <span>STOCK: {{product.stock}}</span>
+    </li>
+  </ul>
+</div>
+

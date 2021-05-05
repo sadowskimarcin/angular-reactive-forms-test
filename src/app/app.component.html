@@ -20,6 +20,10 @@
   <input name="phone" formControlName="phone">
 
   <br>
+  <label>Product:</label>
+  <app-select [products]="products" formControlName="product"></app-select>
+
+  <br>
 
   <label>Email</label>
   <input type="radio" (click)="setSubscription('email')" value="email" formControlName="subscription">
@@ -71,5 +75,6 @@
 
   <br>
   <br>
+  <div (click)="onSubmit(modelForm)">show</div>
   <button [disabled]="!modelForm.valid" type="submit">Send</button>
 </form>

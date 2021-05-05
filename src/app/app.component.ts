@@ -16,6 +16,11 @@ import { debounceTime } from "rxjs/operators";
 export class AppComponent {
   modelForm: FormGroup;
 
+  products = [
+    { name: "Bananas", price: 30, stock: "in stock" },
+    { name: "Apples", price: 42, stock: "N/A" }
+  ];
+
   formErrors = {
     firstname: "",
     lastname: ""
@@ -40,6 +45,7 @@ export class AppComponent {
       email: ["", Validators.required],
       phone: "",
       subscription: "email",
+      product: "",
       card: this.formBuilder.group({
         cvv: "",
         cardNumber: "",
