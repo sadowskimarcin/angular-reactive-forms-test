@@ -45,7 +45,7 @@ export class AppComponent {
         cardNumber: "",
         expirationDate: ""
       }),
-      positions: this.formBuilder.array([])
+      positions: this.formBuilder.array([this.buildPosition()])
     });
 
     this.modelForm.valueChanges.pipe(debounceTime(1000)).subscribe(value => {
@@ -108,11 +108,11 @@ export class AppComponent {
     return <FormArray>this.modelForm.get("positions");
   }
 
-  addPosition() : void {
+  addPosition(): void {
     this.positions.push(this.buildPosition());
   }
 
-  removePosition(i) : void {
+  removePosition(i): void {
     this.positions.removeAt(i);
   }
 }
