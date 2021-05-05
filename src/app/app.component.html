@@ -1,4 +1,75 @@
-<hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+<form [formGroup]="modelForm" (ngSubmit)="onSubmit(modelForm)">
+  <label>firstname:</label>
+  <input name="firstname" formControlName="firstname">
+  <span *ngIf="formErrors.firstname">{{ formErrors.firstname }}</span>
+
+  <br>
+
+  <label>Lastname:</label>
+  <input name="lastname" formControlName="lastname">
+  <span *ngIf="formErrors.lastname">{{ formErrors.lastname }}</span>
+
+  <br>
+
+  <label>Email:</label>
+  <input name="email" formControlName="email">
+
+  <br>
+
+  <label>Phone:</label>
+  <input name="phone" formControlName="phone">
+
+  <br>
+
+  <label>Email</label>
+  <input type="radio" (click)="setSubscription('email')" value="email" formControlName="subscription">
+
+  <br>
+  <label>SMS</label>
+  <input type="radio" (click)="setSubscription('sms')" value="sms" formControlName="subscription">
+  <br>
+
+  <br>
+  <button (click)="setCardValidation()">Add card?</button>
+  <br>
+  <fieldset formGroupName="card">
+    <label>CVV:</label>
+    <input name="cvv" formControlName="cvv"> <br>
+
+    <label>Card number:</label>
+    <input name="cardNumber" formControlName="cardNumber"> <br>
+
+    <label>Expiration date:</label>
+    <input name="expirationDate" formControlName="expirationDate">
+  </fieldset>
+
+
+  <br>
+
+  <button (click)="addPosition()">Add position</button>
+  <div formArrayName="positions" *ngFor="let pos of positions.controls; let i = index">
+
+    <h3>Position {{ i + 1}}</h3>
+    <button (click)="removePosition(i)">remove (X)</button>
+
+    <fieldset [formGroupName]="i">
+      <label attr.for="{{ 'posId' + i }}">Job:</label>
+      <input id="{{ 'posId' + i }}" formControlName="job">
+      <br>
+
+      <label>Company:</label>
+      <input name="company" formControlName="company">
+      <br>
+
+      <label>City:</label>
+      <input name="city" formControlName="city">
+      <br>
+    </fieldset>
+
+  </div>
+
+
+  <br>
+  <br>
+  <button [disabled]="!modelForm.valid" type="submit">Send</button>
+</form>
